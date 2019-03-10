@@ -3,6 +3,7 @@ var cheerio = require("cheerio");
 var number_of_grup = 2806;
 var results_name_grup = [];
 var results_lessons = [];
+var output_day_date = [];
 var cabinet = [];
 var prep = [];
 var result_time_of_lessons_left = [];
@@ -39,8 +40,17 @@ needle.get(url, function(err, res) {
     };
     output_disciplina_time.push(disciplina_time);
   });
+  $(".day_date").each((i, elem) => {
+    var $a = $(elem).find("p");
+    var day_date = {
+      data: $a.text().split(" ")
+    };
+    output_day_date.push(day_date);
+  });
+
   for (var i = 0; i <= output_disciplina.length; i++) {
     console.log(output_disciplina_time[i]);
     console.log(output_disciplina[i]);
+    console.log(output_day_date[i]);
   }
 });
