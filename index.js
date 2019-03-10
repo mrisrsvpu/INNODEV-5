@@ -2,23 +2,14 @@ var needle = require("needle");
 var cheerio = require("cheerio");
 var number_of_grup = 2806;
 var results_name_grup = [];
-var results_lessons = [];
 var output_day_date = [];
-var cabinet = [];
-var prep = [];
-var result_time_of_lessons_left = [];
-var result_time_of_lessons_right = [];
-var rezult_summ = [];
-var result_disciplina_time = [];
 var output_disciplina_time = [];
-var rezult_last = [];
 var day_num = 0;
 var output_all_inf = [];
+var output_disciplina = [];
 url =
   "http://www.rsvpu.ru/raspisanie-zanyatij-ochnoe-otdelenie/?v_gru=" +
   number_of_grup;
-var output_disciplina = [];
-var output_kabinets = [];
 
 needle.get(url, function(err, res) {
   if (err) throw err;
