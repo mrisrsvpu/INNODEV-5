@@ -4,16 +4,15 @@ var cheerio = require("cheerio");
 var express = require('express');
 var app = express();
 
-//var number_of_grup = 2806;
 var results_name_grup = [];
 var output_day_date = [];
 var output_disciplina_time = [];
 var day_num = 0;
 var output_disciplina = [];
-
 var g;
+
 app.get('/grup/:id', function(req, res) {
- //g = 0;
+ 
 var output_all_inf = [];
 url =
   "http://www.rsvpu.ru/raspisanie-zanyatij-ochnoe-otdelenie/?v_gru=" +
