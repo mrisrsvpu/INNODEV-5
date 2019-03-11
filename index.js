@@ -1,16 +1,24 @@
 var needle = require("needle");
 var cheerio = require("cheerio");
-var number_of_grup = 2806;
+
+var express = require('express');
+var app = express();
+
+//var number_of_grup = 2806;
 var results_name_grup = [];
 var output_day_date = [];
 var output_disciplina_time = [];
 var day_num = 0;
-var output_all_inf = [];
 var output_disciplina = [];
+
+var g;
+app.get('/grup/:id', function(req, res) {
+ //g = 0;
+var output_all_inf = [];
 url =
   "http://www.rsvpu.ru/raspisanie-zanyatij-ochnoe-otdelenie/?v_gru=" +
-  number_of_grup;
-
+  req.params.id;
+console.log(req.params.id);
 needle.get(url, function(err, res) {
   if (err) throw err;
 
@@ -120,5 +128,15 @@ needle.get(url, function(err, res) {
     // console.log(output_disciplina[i].title[2]); //Кабинет                    //////
     // console.log(output_disciplina[i].title[3]); //Имя преподавателя        //
   }
-  console.log(JSON.stringify(output_all_inf)); // преобразование обекта в json строку
+  g = output_all_inf;
+ // console.log(g); 
+ Send_all();  
 });
+function Send_all() {
+  res.send(JSON.stringify(g));  // преобразование обекта в json строку  и отправка
+}
+
+});
+
+
+app.listen(3000);
