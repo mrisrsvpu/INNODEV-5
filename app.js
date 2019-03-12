@@ -4,16 +4,16 @@ var cheerio = require("cheerio");
 var express = require("express");
 var app = express();
 
-var results_name_grup = [];
+var results_name_group = [];
 var output_day_date = [];
 var output_disciplina_time = [];
 var day_num = 0;
 var output_disciplina = [];
 var g;
 
-app.get("/grup/:id", function(req, res) {
+app.get("/group/:id", function(req, res) {
   g = [];
-  results_name_grup = [];
+  results_name_group = [];
   output_day_date = [];
   output_disciplina_time = [];
   day_num = 0;
@@ -27,7 +27,7 @@ app.get("/grup/:id", function(req, res) {
     if (err) throw err;
 
     var $ = cheerio.load(res.body);
-    results_name_grup = $(".rasp_header").text(); //ок
+    results_name_group = $(".rasp_header").text(); //ок
 
     $(".disciplina_info").each((i, elem) => {
       var $a = $(elem).find("p");
@@ -113,7 +113,7 @@ app.get("/grup/:id", function(req, res) {
           : 1;
 
       var all_inf = {
-        name_of_grup: results_name_grup, //Номер группы
+        name_of_group: results_name_group, //Номер группы
         data: output_day_date[day_num].data[day], // Дата
         number: output_disciplina_time[i].time[0], // Номер пары
         time: output_disciplina_time[i].time[1], // Время начала пары
