@@ -123,17 +123,8 @@ app.get("/grup/:id", function(req, res) {
         name_of_pedagog: output_disciplina[i].title[3] //Имя преподавателя
       };
       output_all_inf.push(all_inf);
-
-      // console.log(output_day_date[day_num].data[day]); // Дата               //
-      // console.log(output_disciplina_time[i].time[0]); // Номер пары            //////
-      // console.log(output_disciplina_time[i].time[1]); // Время начала пары          /////////
-      // console.log(output_disciplina[i].title[0]); //название пары                           //// отладка
-      // console.log(output_disciplina[i].title[1]); //Тип пары                         ////////
-      // console.log(output_disciplina[i].title[2]); //Кабинет                    //////
-      // console.log(output_disciplina[i].title[3]); //Имя преподавателя        //
     }
     g = output_all_inf;
-    // console.log(g);
     Send_all();
   });
   function Send_all() {
