@@ -33,7 +33,7 @@
 
 # docker
 
-сборка образа - `docker build -t mris/parser .`  
+сборка образа - `docker build -f Dockerfile -t mris/parser .`  
 запуск образа - `docker run --rm -ti mris/parser` 
 или в фоне - `docker run --rm --name parser -d mris/parser`  
 запуск через compose - `docker-compose up`  
