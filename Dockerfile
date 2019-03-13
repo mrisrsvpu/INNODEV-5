@@ -10,7 +10,7 @@ WORKDIR /app
 
 RUN npm i yarn \
     && yarn install
-#    && apk add curl
+    && apk add curl
 
 COPY . /app
 
