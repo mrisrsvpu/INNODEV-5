@@ -9,10 +9,9 @@ var output_day_date = [];
 var output_disciplina_time = [];
 var day_num = 0;
 var output_disciplina = [];
-var g;
+
 
 app.get("/group/:id", function(req, res) {
-  g = [];
   results_name_group = [];
   output_day_date = [];
   output_disciplina_time = [];
@@ -110,11 +109,10 @@ app.get("/group/:id", function(req, res) {
       };
       output_all_inf.push(all_inf);
     }
-    g = output_all_inf;
-    Send_all();
+    Send_all(output_all_inf);
   });
-  function Send_all() {
-    res.send(JSON.stringify(g)); // преобразование обекта в json строку  и отправка
+  function Send_all(a) {
+    res.send(JSON.stringify(a)); // преобразование обекта в json строку  и отправка
   }
 });
 module.exports = app;
