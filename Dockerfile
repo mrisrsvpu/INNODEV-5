@@ -5,7 +5,7 @@ ENV NODE_ENV production
 
 EXPOSE 80
 
-COPY package.json /app
+COPY package.json /app/
 WORKDIR /app
 
 RUN npm i yarn \
