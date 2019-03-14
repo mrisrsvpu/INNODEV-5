@@ -1,0 +1,21 @@
+version: "3.7"
+
+services:
+  parser:
+    image: mris/parser
+    build: .
+    ports:
+      - "80:80"
+    environment:
+      PORT: 80
+    healthcheck:
+      test: "curl -f https//localhost:$PORT/group/1 || exit 1"
+      interval: 1m30s
+      timeout: 30s
+      retries: 3
+    restart: on-failure
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10k"
+        max-file: "10"
