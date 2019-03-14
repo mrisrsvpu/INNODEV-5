@@ -9,7 +9,7 @@ COPY package.json /app
 WORKDIR /app
 
 RUN npm i yarn \
-    && yarn install
+    && yarn install \
     && apk add curl
 
 COPY . /app
