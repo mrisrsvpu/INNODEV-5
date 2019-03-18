@@ -151,6 +151,7 @@ app.get("/teacher/:id", function(req, res) {
 
       output_disciplina_time.push(disciplina_time);
     });
+    
     $(".day_date").each((i, elem) => {
       var $a = $(elem).find("p");
       var day_date = {
@@ -212,7 +213,11 @@ app.get("/teacher/:id", function(req, res) {
         name: output_disciplina[i].title[0], //название пары
         type: output_disciplina[i].title[1], //Тип пары
         class_room: output_disciplina[i].title[2], //Кабинет
-        name_of_pedagog: output_disciplina[i].title[3] //Имя преподавателя
+        name_of_pedagog: output_disciplina[i].title[3], //Имя преподавателя
+        name_: output_disciplina[i].title[4], //название пары
+        type_: output_disciplina[i].title[5], //Тип пары
+        class_room_: output_disciplina[i].title[6], //Кабинет
+        name_of_pedagog_: output_disciplina[i].title[7] //Имя преподавателя
       };
       output_all_inf.push(all_inf);
     }
