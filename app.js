@@ -8,7 +8,7 @@ var results_name_group = [];
 var output_day_date = [];
 var output_disciplina_time = [];
 var day_num = 0;
-var output_disciplina = []; // перемнная бл
+var output_disciplina = []; 
 
 
 app.get("/group/:id", function(req, res) {
