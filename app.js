@@ -30,7 +30,7 @@ function f_disciplina_info($) {
     output_disciplina_f.push(disciplina);
     });
     return output_disciplina_f;
-};
+}
 
 function f_output_disciplina_time($) {
   var output_disciplina_time_f = [];
@@ -46,9 +46,7 @@ function f_output_disciplina_time($) {
 }
 
 function f_output_day_date($){
-
   var  output_day_date_f = [];
-
   $(".day_date").each((i, elem) => {
       var $a = $(elem).find("p");
       var day_date = {
@@ -60,33 +58,22 @@ function f_output_day_date($){
 }
 
 app.get("/group/:id", function(req, res) {
-
   reset_variables();
-
   url =
     "http://www.rsvpu.ru/raspisanie-zanyatij-ochnoe-otdelenie/?v_gru=" +
     req.params.id;
-  console.log(req.params.id);
   needle.get(url, function(err, res) {
     if (err) throw err;
 
     var $ = cheerio.load(res.body);
-
     output_name_group = $(".rasp_header").text();
-
-    
     output_disciplina = f_disciplina_info($);
-
     output_disciplina_time = f_output_disciplina_time($);
-
     output_day_date = f_output_day_date($);
 
     for (var i = 0; i < output_disciplina.length; i++) {
-      
       day_num = i == 0 ? 0 : Math.ceil(i / 14) - 1;
-
       day = 1 - Math.ceil(i / 7) % 2;
-
       var all_inf = {
         name_of_group: output_name_group, //Номер группы
         data: output_day_date[day_num].data[day], // Дата
@@ -113,9 +100,7 @@ app.get("/group/:id", function(req, res) {
 });
 
 app.get("/teacher/:id", function(req, res) {
-
   reset_variables();
-
   url =
     "http://www.rsvpu.ru/raspisanie-zanyatij-ochnoe-otdelenie/?dbchoice=current&v_prep=" +
     req.params.id;
@@ -124,21 +109,14 @@ app.get("/teacher/:id", function(req, res) {
     if (err) throw err;
 
     var $ = cheerio.load(res.body);
-
     results_name_teacher = $(".rasp_header").text();
-
     output_disciplina = f_disciplina_info($);
-
     output_disciplina_time = f_output_disciplina_time($);
-
     output_day_date = f_output_day_date($);
 
     for (var i = 0; i < output_disciplina.length; i++) {
-
       day_num = i == 0 ? 0 : Math.ceil(i / 14) - 1;
-
       day = 1 - Math.ceil(i / 7) % 2;
-
       var all_inf = {
         name_of_ped: results_name_teacher, //Номер группы
         data: output_day_date[day_num].data[day], // Дата
@@ -160,9 +138,7 @@ app.get("/teacher/:id", function(req, res) {
 });
 
 app.get("/extr_teacher/:id", function(req, res) {
-  
   reset_variables();
-
   url =
     "http://www.rsvpu.ru/raspisanie-zanyatij-ochnoe-otdelenie/?dbchoice=current&v_prep=" +
     req.params.id;
@@ -172,19 +148,13 @@ app.get("/extr_teacher/:id", function(req, res) {
 
     var $ = cheerio.load(res.body);
     results_name_teacher = $(".rasp_header").text();
-
-   output_disciplina = f_disciplina_info($);
-
+    output_disciplina = f_disciplina_info($);
     output_disciplina_time = f_output_disciplina_time($);
-
     output_day_date = f_output_day_date($);
 
     for (var i = 0; i < output_disciplina.length; i++) {
-
       day_num = i == 0 ? 0 : Math.ceil(i / 14) - 1;
-
       day = 1 - Math.ceil(i / 7) % 2;
-
       var all_inf = {
         name_of_ped: results_name_teacher, //Номер группы
         data: output_day_date[day_num].data[day], // Дата
@@ -206,9 +176,7 @@ app.get("/extr_teacher/:id", function(req, res) {
 });
 
 app.get("/extr_group/:id", function(req, res) {
-  
   reset_variables();
-
   url =
     "http://www.rsvpu.ru/racpisanie-zanyatij-zaochnoe-otdelenie/?dbchoice=current&v_gru=" +
     req.params.id;
@@ -218,19 +186,13 @@ app.get("/extr_group/:id", function(req, res) {
 
     var $ = cheerio.load(res.body);
     output_name_group = $(".rasp_header").text();
-
     output_disciplina = f_disciplina_info($);
-
     output_disciplina_time = f_output_disciplina_time($);
-
     output_day_date = f_output_day_date($);
 
     for (var i = 0; i < output_disciplina.length; i++) {
-      
       day_num = i == 0 ? 0 : Math.ceil(i / 14) - 1;
-
       day = 1 - Math.ceil(i / 7) % 2;
-
       var all_inf = {
         name_of_group: output_name_group, //Номер группы
         data: output_day_date[day_num].data[day], // Дата
