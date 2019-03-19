@@ -104,7 +104,6 @@ app.get("/teacher/:id", function(req, res) {
   url =
     "http://www.rsvpu.ru/raspisanie-zanyatij-ochnoe-otdelenie/?dbchoice=current&v_prep=" +
     req.params.id;
-  console.log(req.params.id);
   needle.get(url, function(err, res) {
     if (err) throw err;
 
@@ -142,7 +141,6 @@ app.get("/extr_teacher/:id", function(req, res) {
   url =
     "http://www.rsvpu.ru/raspisanie-zanyatij-ochnoe-otdelenie/?dbchoice=current&v_prep=" +
     req.params.id;
-  console.log(req.params.id);
   needle.get(url, function(err, res) {
     if (err) throw err;
 
@@ -180,7 +178,6 @@ app.get("/extr_group/:id", function(req, res) {
   url =
     "http://www.rsvpu.ru/racpisanie-zanyatij-zaochnoe-otdelenie/?dbchoice=current&v_gru=" +
     req.params.id;
-  console.log(req.params.id);
   needle.get(url, function(err, res) {
     if (err) throw err;
 
