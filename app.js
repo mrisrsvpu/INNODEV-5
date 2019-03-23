@@ -189,7 +189,9 @@ app.get("/extr_group/:id", function(req, res) {
 
     for (var i = 0; i < output_disciplina.length; i++) {
       day_num = i == 0 ? 0 : Math.ceil(i / 14) - 1;
-      day = 1 - Math.ceil(i / 7) % 2;
+     // console.log(day_num);
+      day = i == 0 ? 0 : 1 - Math.ceil(i / 7) % 2;
+      console.log(day);
       var all_inf = {
         name_of_group: output_name_group, //Номер группы
         data: output_day_date[day_num].data[day], // Дата
