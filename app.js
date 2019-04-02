@@ -20,15 +20,25 @@ function reset_variables() {
   output_all_inf = [];
 }
 
+function clean(obj) {
+  for (var propName in obj) { 
+    if (obj[propName] === null || obj[propName] === undefined) {
+      delete obj[propName];
+    }
+  }
+}
+
 function f_disciplina_info($) {
   var output_disciplina_f = [];
   $(".disciplina_info").each((i, elem) => {
     var $a = $(elem).find("p");
+
     var disciplina = {
-      title: $a.text().split("  ")
+      data: $a.text().split("  ")
     };
     output_disciplina_f.push(disciplina);
     });
+    
     return output_disciplina_f;
 }
 
@@ -37,7 +47,7 @@ function f_output_disciplina_time($) {
   $(".disciplina_time").each((i, elem) => {
     var $a = $(elem).find("p");
     var disciplina_time = {
-      time: $a.text().split(" ")
+      data: $a.text().split(" ")
     };
 
     output_disciplina_time_f.push(disciplina_time);
@@ -77,18 +87,22 @@ app.get("/group/:id", function(req, res) {
       var all_inf = {
         name_of_group: output_name_group, //Номер группы
         data: output_day_date[day_num].data[day], // Дата
-        number: output_disciplina_time[i].time[0], // Номер пары
-        time: output_disciplina_time[i].time[1], // Время начала пары
-        name: output_disciplina[i].title[0], //название пары
-        type: output_disciplina[i].title[1], //Тип пары
-        class_room: output_disciplina[i].title[2], //Кабинет
-        name_of_pedagog: output_disciplina[i].title[3], //Имя преподавателя
-        pod_grup: output_disciplina[i].title[4],
-        name_1: output_disciplina[i].title[5], //название пары
-        type_1: output_disciplina[i].title[6], //Тип пары
-        class_room_1: output_disciplina[i].title[7], //Кабинет
-        name_of_pedagog_1: output_disciplina[i].title[8], //Имя преподавателя
-        pod_grup_1: output_disciplina[i].title[9]
+        number: output_disciplina_time[i], // Номер пары
+        name: output_disciplina[i]
+        // name_of_group: output_name_group, //Номер группы
+        // data: output_day_date[day_num].data[day], // Дата
+        // number: output_disciplina_time[i].time[0], // Номер пары
+        // time: output_disciplina_time[i].time[1], // Время начала пары
+        // name: output_disciplina[i].title[0], //название пары
+        // type: output_disciplina[i].title[1], //Тип пары
+        // class_room: output_disciplina[i].title[2], //Кабинет
+        // name_of_pedagog: output_disciplina[i].title[3], //Имя преподавателя
+        // pod_grup: output_disciplina[i].title[4],
+        // name_1: output_disciplina[i].title[5], //название пары
+        // type_1: output_disciplina[i].title[6], //Тип пары
+        // class_room_1: output_disciplina[i].title[7], //Кабинет
+        // name_of_pedagog_1: output_disciplina[i].title[8], //Имя преподавателя
+        // pod_grup_1: output_disciplina[i].title[9]
       };
       output_all_inf.push(all_inf);
     }
